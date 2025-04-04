@@ -14,9 +14,17 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    overflow-x: hidden;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 /* Typography */
@@ -499,195 +507,72 @@ section {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        overflow-x: hidden;
-    }
-
     .hero, section, .footer {
-        margin: 0;
-        padding: 1rem;
-        width: 100%;
-        box-sizing: border-box;
+        margin-left: 0;
+        padding: 1.5rem;
     }
 
-    /* Main content sections */
-    .hero-content,
-    .projects,
-    .experience,
-    .contact {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    /* Section headings */
-    .projects h2,
-    .experience h2,
-    .contact h2 {
-        text-align: left;
-        margin: 0 0 1rem 0;
-        padding: 0;
-        font-size: 1.2rem;
-    }
-
-    /* Content containers */
-    .projects-grid,
-    .experience-content,
-    .contact-content {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    /* Project and Experience cards */
-    .project-card,
-    .experience-item {
-        width: 100%;
-        margin: 0 0 1rem 0;
-        padding: 0;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .project-header,
-    .experience-header {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .project-header h3,
-    .experience-header h3 {
-        margin: 0;
-        padding: 0;
-        font-size: 1rem;
-    }
-
-    /* Text alignment and spacing */
-    .project-card p,
-    .experience-item p,
-    .experience-item ul {
-        width: 100%;
-        margin: 0.5rem 0;
-        padding: 0;
-        text-align: left;
-    }
-
-    .experience-item ul {
-        padding-left: 1.5rem;
-    }
-
-    /* Contact section */
-    .contact {
-        margin-top: 2rem;
-        padding: 1rem;
-    }
-
-    .contact-content {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .contact-content p {
-        width: 100%;
-        margin: 0 0 1rem 0;
-        padding: 0;
-        text-align: left;
-    }
-
-    .social-links {
-        width: 100%;
-        margin: 1rem 0;
-        padding: 0;
-        justify-content: flex-start;
-    }
-
-    /* Navigation */
     .navbar {
-        position: fixed;
         bottom: 0;
-        left: 0;
+        top: auto;
         width: 100%;
         height: auto;
         padding: 0.5rem;
+        border-right: none;
         border-top: 1px solid var(--border);
-        background: var(--background);
     }
 
     .nav-links {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
+        flex-direction: row;
         justify-content: space-around;
+        gap: 0;
     }
 
     .nav-links a {
-        margin: 0;
+        font-size: 1.1rem;
         padding: 0.5rem;
     }
 
-    /* Profile section */
+    .nav-links a span {
+        display: none;
+    }
+
     .profile-picture {
         width: 60px;
         height: 60px;
-        margin: 0 0 0.5rem 0;
+        margin-bottom: 0.25rem;
     }
 
     .hero h1 {
-        margin: 0;
-        padding: 0;
         font-size: 1.25rem;
-        text-align: left;
     }
 
     .titles h2,
     .subtitle {
-        margin: 0.5rem 0;
-        padding: 0;
         font-size: 1rem;
-        text-align: left;
     }
 
-    .description {
-        margin: 0.5rem 0;
-        padding: 0;
-        font-size: 0.95rem;
-        text-align: left;
-    }
-
+    .description,
     .year,
     .date,
     .role,
     .experience-item li {
-        margin: 0;
-        padding: 0;
         font-size: 0.95rem;
     }
 
-    /* Ensure content doesn't overflow */
-    .hero,
-    .projects,
-    .experience,
-    .contact {
-        max-width: 100%;
-        overflow-x: hidden;
+    .experience-header {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
-    /* Add bottom padding to account for fixed navbar */
-    body {
-        padding-bottom: 60px;
+    .verified-badge {
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 480px) {
     .hero, section {
-        padding: 0.75rem;
+        padding: 1rem;
     }
 
     .hero h1 {
