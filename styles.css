@@ -514,7 +514,28 @@ section {
         box-sizing: border-box;
     }
 
+    /* Main content sections */
     .hero-content,
+    .projects,
+    .experience,
+    .contact {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Section headings */
+    .projects h2,
+    .experience h2,
+    .contact h2 {
+        text-align: left;
+        margin-left: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* Content containers */
     .projects-grid,
     .experience-content,
     .contact-content {
@@ -524,22 +545,13 @@ section {
         padding: 0;
     }
 
-    .name-container,
-    .titles,
-    .subtitle,
-    .description {
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
+    /* Project and Experience cards */
     .project-card,
     .experience-item {
         width: 100%;
-        padding: 1rem;
+        padding: 1rem 0;
         margin: 0;
+        border-bottom: 1px solid var(--border);
     }
 
     .project-header,
@@ -550,6 +562,41 @@ section {
         width: 100%;
     }
 
+    /* Text alignment and spacing */
+    .project-card p,
+    .experience-item p,
+    .experience-item ul {
+        text-align: left;
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .experience-item ul {
+        padding-left: 1.5rem;
+    }
+
+    /* Contact section */
+    .contact {
+        margin-top: 2rem;
+    }
+
+    .contact-content {
+        text-align: left;
+        width: 100%;
+    }
+
+    .contact-content p {
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    /* Navigation */
     .navbar {
         bottom: 0;
         top: auto;
@@ -575,6 +622,7 @@ section {
         display: none;
     }
 
+    /* Profile section */
     .profile-picture {
         width: 60px;
         height: 60px;
@@ -583,43 +631,25 @@ section {
 
     .hero h1 {
         font-size: 1.25rem;
+        text-align: left;
     }
 
     .titles h2,
     .subtitle {
         font-size: 1rem;
+        text-align: left;
     }
 
-    .description,
+    .description {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
     .year,
     .date,
     .role,
     .experience-item li {
         font-size: 0.95rem;
-    }
-
-    .experience-header {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .verified-badge {
-        font-size: 1.1rem;
-    }
-
-    /* Contact Section */
-    .contact-content {
-        padding: 1rem;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .social-links a {
-        font-size: 1.5rem;
     }
 }
 
@@ -659,15 +689,15 @@ section {
         height: 50px;
     }
 
-    /* Ensure content is centered and readable */
+    /* Ensure content fits within viewport */
     .projects-grid,
     .experience-content {
-        padding: 0 1rem;
+        padding: 0;
     }
 
     .project-card,
     .experience-item {
-        padding: 1rem;
+        padding: 1rem 0;
         margin-bottom: 1rem;
     }
 
@@ -675,7 +705,13 @@ section {
     .experience-item p,
     .experience-item ul {
         margin-left: 0;
-        padding-left: 1rem;
+        padding-left: 0;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .experience-item ul {
+        padding-left: 1.5rem;
     }
 }
 
