@@ -30,12 +30,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = 'var(--background)';
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
+});
+
+// Section Highlight on Scroll
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+
+const observerOptions = {
+    threshold: 0.2,  // Reduced threshold to trigger earlier
+    rootMargin: '-20% 0px -80% 0px'  // Adjusted margins to better track current section
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Remove active class from all nav items
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Add active class to corresponding nav item
+            const id = entry.target.getAttribute('id');
+            const navItem = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (navItem) {
+                navItem.classList.add('active');
+            }
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
 });
 
 // Form Submission
@@ -52,24 +79,24 @@ if (contactForm) {
 
 // Project Cards Animation on Scroll
 const projectCards = document.querySelectorAll('.project-card');
-const observerOptions = {
+const projectObserverOptions = {
     threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries) => {
+const projectObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, projectObserverOptions);
 
 projectCards.forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
+    projectObserver.observe(card);
 });
 
 // Skills Progress Animation
@@ -90,4 +117,23 @@ skillCategories.forEach(category => {
     category.style.transform = 'translateX(-20px)';
     category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     skillObserver.observe(category);
+});
+
+// Rocket movement on scroll
+const rocket = document.querySelector('.rocket');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+    
+    if (scrollDirection === 'down') {
+        rocket.classList.remove('scrolled');
+        rocket.classList.add('scrolled-up');
+    } else {
+        rocket.classList.remove('scrolled-up');
+        rocket.classList.add('scrolled');
+    }
+    
+    lastScrollTop = scrollTop;
 }); 
